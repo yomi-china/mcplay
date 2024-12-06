@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的世界联机</title>
+    <style>
+        /* 确保html和body的高度为100%，并且不显示滚动条 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* 默认的背景颜色和字体颜色 */
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* 深色模式的样式 */
+        body.dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        /* Header样式 */
+        header {
+            background-color: #636bdb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        /* 内容区域，三栏布局 */
+        .content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* 每一栏的样式 */
+        .content > div {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .content > div:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .content > div h2 {
+            margin-top: 0;
+        }
+
+        /* 下载按钮的样式 */
+        .download-button {
+            display: inline-block;
+            margin-top: auto;
+            background-color: #4577a0;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background-color: #365a8c;
+        }
+
+        /* 底部的样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 响应式布局：当屏幕宽度小于900px时，调整为垂直排列 */
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+            .content > div {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* 深色模式的颜色调整 */
+        body.dark-mode header {
+            background-color: #636bdb;
+        }
+
+        body.dark-mode .content > div {
+            background-color: #414141;
+            color: #f0f0f0;
+        }
+
+        body.dark-mode footer {
+            background-color: #222;
+        }
+
+        /* 深色模式按钮样式 */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #636bdb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease; /* 按钮的过渡动画 */
+        }
+
+        /* 按钮的悬停动画 */
+        .dark-mode-toggle:hover {
+            background-color: #3e517a85;
+            transform: scale(1.1); /* 鼠标悬停时略微放大 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 鼠标悬停时增加阴影 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>模组更新下载</h1>
+        <p>欢迎访问yomi的页面，点击下面的按钮下载最新版本的模组和资源包。</p>
+    </header>
+
+    <div class="content">
+        <div>
+            <h2>服务器精美图集</h2>
+            <p>高清精美好图点击即可欣赏。</p>
+            <a href="https://github.com/你的用户名/你的仓库名/raw/main/mods/mod-v1.0.zip" class="download-button" download>很明显我还没做</a>
+        </div>
+        <div>
+            <h2>下载最新模组包</h2>
+            <p>请下载并安装模组包的最新版本。</p>
+            <a href="https://github.com/你的用户名/你的仓库名/raw/main/mods/mod-v1.0.zip" class="download-button" download>下载mods.zip</a>
+        </div>
+        <div>
+            <h2>下载自制资源包</h2>
+            <p>如果你还没有下载资源包，请点击下面的链接下载，资源包包含了游戏拓展的附加资源。</p>
+            <a href="https://github.com/你的用户名/你的仓库名/raw/main/resources/resource-pack.zip" class="download-button" download>下载汉化包</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Yomi的个人网站 | 我的世界联机相关</p>
+    </footer>
+
+    <!-- 深色模式切换按钮 -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">切换深浅色模式</button>
+
+    <script>
+        // 切换深色模式的函数
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode'); // 切换dark-mode类
+        }
+    </script>
+
+</body>
+</html>
