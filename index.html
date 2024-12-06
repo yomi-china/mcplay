@@ -150,29 +150,44 @@
             transform: scale(1.1); /* 鼠标悬停时略微放大 */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 鼠标悬停时增加阴影 */
         }
+
+        /* 访问量 */
+        .visit {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            z-index: 1000;
+        }
+
     </style>
 </head>
 <body>
+
+    <div class="visit" id="visit"></div>
     <header>
         <h1>模组更新下载</h1>
         <p>欢迎访问yomi的页面，点击下面的按钮下载最新版本的模组和资源包。</p>
     </header>
 
+    
     <div class="content">
         <div>
             <h2>服务器精美图集</h2>
             <p>高清精美好图点击即可欣赏。</p>
-            <a href="https://github.com/你的用户名/你的仓库名/raw/main/mods/mod-v1.0.zip" class="download-button" download>很明显我还没做</a>
+            <a href="" class="download-button" download>很明显我还没做</a>
         </div>
         <div>
             <h2>下载最新模组包</h2>
             <p>请下载并安装模组包的最新版本。</p>
-            <a href="https://github.com/你的用户名/你的仓库名/raw/main/mods/mod-v1.0.zip" class="download-button" download>下载mods.zip</a>
+            <a href="https://huang2728.sharepoint.com/sites/hk41/_layouts/15/download.aspx?UniqueId=3716ffd1-2c9e-4c5b-a987-ab20ecac611b&Translate=false&tempauth=v1.eyJzaXRlaWQiOiIzMTEzMzg0Yy05NmY3LTRiOTAtYjRjZC03OWRmNTVmZThlZDUiLCJhcHBfZGlzcGxheW5hbWUiOiJjbG91ZHJldmUiLCJhcHBpZCI6IjljMjAwMzlhLWQ1ZGUtNDU0OC1hZTgwLTU2NTVjZmVkZDQzZSIsImF1ZCI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9odWFuZzI3Mjguc2hhcmVwb2ludC5jb21AZGE1YjY2NTItNDhiYy00ZDJhLTlhMjItMGI3YmMyNjgyYzkwIiwiZXhwIjoiMTczMzQ4OTI5NCJ9.CgoKBHNuaWQSAjY0EgsI9LDB5Lz9yj0QBRoMNDAuMTI2LjI2LjI0KixvcHFJSE1vREZnRXFTNktwZHU2U3NXZnVGM3NzMGcydmZMSVFTRXh3SkFvPTCDATgBQhChat-WTOAAQDEnXfXEX8cHShBoYXNoZWRwcm9vZnRva2VuUghbImttc2kiXXIpMGguZnxtZW1iZXJzaGlwfDEwMDMyMDAyNGIzY2QxY2JAbGl2ZS5jb216ATKCARIJUmZb2rxIKk0RmiILe8JoLJCiAR1oazFAaHVhbmcyNzI4Lm9ubWljcm9zb2Z0LmNvbaoBEDEwMDMyMDAyNEIzQ0QxQ0KyAQ5hbGxmaWxlcy53cml0ZcgBAQ.DVZZB-WOH-qGCeoU12JrlSi0156EdSwAqDGPx656VXo&ApiVersion=2.0" class="download-button" download>下载mods.zip</a>
         </div>
         <div>
             <h2>下载自制资源包</h2>
             <p>如果你还没有下载资源包，请点击下面的链接下载，资源包包含了游戏拓展的附加资源。</p>
-            <a href="https://github.com/你的用户名/你的仓库名/raw/main/resources/resource-pack.zip" class="download-button" download>下载汉化包</a>
+            <a href="" class="download-button" download>显然我也没做完</a>
         </div>
     </div>
 
@@ -183,12 +198,22 @@
     <!-- 深色模式切换按钮 -->
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">切换深浅色模式</button>
 
+    <!-- 引入Markdown解析库 (marked.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <script>
         // 切换深色模式的函数
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode'); // 切换dark-mode类
         }
-    </script>
 
+        // 使用marked.js库将Markdown内容渲染为HTML
+        document.addEventListener("DOMContentLoaded", function() {
+            const markdownText = '##### 网站访问量： ![](https://saobby.pythonanywhere.com/api/webcounter?id=B0zbyTa5m4BTV7jP)'; // 在这里可以自由编辑Markdown文本
+            const visitElement = document.getElementById('visit');
+            visitElement.innerHTML = marked.parse(markdownText); // 使用marked渲染Markdown
+        });
+    </script>
+    
 </body>
 </html>
